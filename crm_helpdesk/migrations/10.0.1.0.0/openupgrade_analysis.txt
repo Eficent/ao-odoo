@@ -1,0 +1,3 @@
+---Fields in module 'crm_helpdesk'---
+---XML records in module 'crm_helpdesk'---
+-- nothing has changed in this module
