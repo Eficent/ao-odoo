@@ -2,9 +2,9 @@
    :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-===============================
-Open Purchase Order Line Report
-===============================
+=====================================
+AO Purchase Order Lines Invoicing Status
+=====================================
 
 This module adds an specific view in purchase application that allows to see
 open purchase order status

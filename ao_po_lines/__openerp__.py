@@ -4,9 +4,9 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
-    "name": "Open Purchase Order Line Report",
+    "name": "AO Purchase Order Lines Invoicing Status",
     "version": "9.0.1.0.0",
-    "author": "Eficent Business and IT Consulting Services S.L.",
+    "author": "Eficent",
     "website": "http://www.eficent.com",
     "category": "Purchase",
     "depends": ["purchase",

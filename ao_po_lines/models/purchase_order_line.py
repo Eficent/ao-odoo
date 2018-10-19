@@ -8,8 +8,12 @@ from openerp import api, fields, models
 class PurchaseOrderLine(models.Model):
     _inherit = "purchase.order.line"
 
+    amount_invoiced = fields.Float(
+        string="Amount Invoiced", readonly=True, compute='_compute_balance_due',
+        store=False
+    )
     balance_due = fields.Float(
-        string="Invoiced", readonly=True, compute='_compute_balance_due',
+        string="Balance due", readonly=True, compute='_compute_balance_due',
         store=False
     )
 
@@ -20,4 +24,6 @@ class PurchaseOrderLine(models.Model):
         for rec in to_compute:
             if rec.invoice_lines:
                 for invoice_line in rec.invoice_lines:
-                    rec.balance_due += invoice_line.price_subtotal_signed
+                    rec.amount_invoiced += invoice_line.price_subtotal_signed
+            rec.balance_due = rec.price_total - rec.amount_invoiced
+
