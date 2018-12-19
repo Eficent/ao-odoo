@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="mrp_bom_form_view">
+        <field name="name">mrp.bom.form</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Standard Cost Info" name="cost_page">
+                    <group>
+                        <field name="standard_cost_total"/>
+                        <field name="standard_cost_material"/>
+                        <field name="standard_cost_labor"/>
+                        <field name="standard_cost_overhead"/>
+                    </group>
+                    <field name="bom_cost_ids"/>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>
