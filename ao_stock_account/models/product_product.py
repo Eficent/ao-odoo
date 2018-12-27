@@ -43,11 +43,13 @@ class ProductProduct(models.Model):
         # to prevent sql injections
         if operator not in ('<', '>', '=', '!=', '<=', '>='):
             raise UserError(_('Invalid domain operator %s') % operator)
-        if not isinstance(value, (str, bool)):
+        if not isinstance(value, (str,)):
             raise UserError(_('Invalid domain right operand %s') % value)
 
         ids = []
         for product in self.with_context(prefetch_fields=False).search([]):
+            if not product['last_date_moved']:
+                continue
             if OPERATORS[operator](product['last_date_moved'], value):
                 ids.append(product.id)
         return [('id', 'in', ids)]
