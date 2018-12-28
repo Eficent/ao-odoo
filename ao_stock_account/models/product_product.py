@@ -31,6 +31,7 @@ class ProductProduct(models.Model):
         self.env.cr.execute("""
             SELECT product_id, max(date) as last_move_date
             FROM stock_move
+            WHERE state = 'done'
             GROUP BY product_id
         """)
         for product_id,  last_move_date in self.env.cr.fetchall():
