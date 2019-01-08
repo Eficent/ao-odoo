@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Helpdesk report after Sales Services Search View -->
+    <record id="view_report_crm_helpdesk_filter" model="ir.ui.view">
+        <field name="name">crm.helpdesk.report.select</field>
+        <field name="model">crm.helpdesk.report</field>
+        <field name="inherit_id" ref="crm_helpdesk.view_report_crm_helpdesk_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <filter name="last_week" string="Last Week"
+                    domain="[
+                        '&amp;',
+                        ('date', '>=', (context_today() + relativedelta(weeks=-2,days=1,weekday=0)).strftime('%Y-%m-%d')),
+                        ('date', '&lt;=', (context_today() + relativedelta(weeks=-1,weekday=6)).strftime('%Y-%m-%d')),
+                    ]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_crm_case_helpdesk_filter" model="ir.ui.view">
+        <field name="name">CRM - Helpdesk Search</field>
+        <field name="model">crm.helpdesk</field>
+        <field name="inherit_id"
+               ref="crm_helpdesk.view_crm_case_helpdesk_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <filter name="last_week" string="Last Week"
+                    domain="[
+                        '&amp;',
+                        ('date', '>=', (context_today() + relativedelta(weeks=-2,days=1,weekday=0)).strftime('%Y-%m-%d')),
+                        ('date', '&lt;=', (context_today() + relativedelta(weeks=-1,weekday=6)).strftime('%Y-%m-%d')),
+                    ]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -10,6 +10,7 @@
     "depends": ["crm_helpdesk"],
     "license": "AGPL-3",
     "data": [
+        "views/crm_helpdesk_view.xml",
         "views/res_partner_view.xml",
     ],
     "installable": True,
