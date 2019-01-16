@@ -26,28 +26,28 @@ Usage
 =====
 To edit a decimal precision :
 
-1. Choose a field that you want to edit its decimal accuracy (Ex. Product Price) :
+* Choose a field that you want to edit its decimal accuracy (Ex. Product Price) :
 
 .. figure:: static/description/choose_field.png
    :alt: Choose field
    :width: 100%
 
-2. Go to ``Settings > Technical > Database Structure``> Decimal accuracy menu.
-3. Select Decimal accuracy corresponding to field.
+* Go to ``Settings > Technical > Database Structure``> Decimal accuracy menu.
+* Select Decimal accuracy corresponding to field.
 
 .. figure:: static/description/select_decimal_accuracy.png
    :alt: Select Decimal accuracy
    :width: 100%
 
-4. Then edit the value of digits you want to compute, and the number of digits you want to display.
+* Then edit the value of digits you want to compute, and the number of digits you want to display.
 
-   In this example we put 3 digits to display and 5 to compute
+  In this example we put 3 digits to display and 5 to compute
 
 .. figure:: static/description/edit_decimal_accuracy.png
    :alt: Decimal accuracy edited
    :width: 100%
 
-5. Now, go back to your interface to see the new decimal accuracy :
+* Now, go back to your interface to see the new decimal accuracy :
 
 .. figure:: static/description/new_decimal_accuracy.png
    :alt: New decimal accuracy
