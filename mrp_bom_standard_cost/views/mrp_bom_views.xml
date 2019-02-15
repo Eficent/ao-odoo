@@ -6,6 +6,12 @@
         <field name="model">mrp.bom</field>
         <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
         <field name="arch" type="xml">
+            <xpath expr="//form//sheet" position="before">
+                <header>
+                    <button name="run_recompute_costs" class="oe_highlight"
+                        string="Re-compute Costs" type="object"/>
+                </header>
+            </xpath>
             <notebook position="inside">
                 <page string="Standard Cost Info" name="cost_page">
                     <group>
