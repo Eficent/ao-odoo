@@ -10,15 +10,14 @@
     "category": "Manufacturing",
     "depends": [
         "account_move_line_manufacture_info",
+        "mrp_bom_structure_report",
     ],
     "data": [
-        "reports/templates/layouts.xml",
-        "reports/report_mrpstandardcost.xml",
-        "wizard/mrp_bom_standard_cost_report_view.xml",
         "views/mrp_bom_views.xml",
         "views/mrp_bom_cost_views.xml",
         "views/report_template.xml",
         "views/product_views.xml",
+        "reports/mrp_report_bom_structure.xml",
     ],
     "license": "AGPL-3",
     'installable': True,

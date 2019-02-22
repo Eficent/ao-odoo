@@ -17,7 +17,6 @@ class TestBomStandardCost(common.SavepointCase):
         cls.bom_obj = cls.env['mrp.bom']
         cls.bom_line_obj = cls.env['mrp.bom.line']
         cls.location_production = cls.env.ref('stock.location_production')
-        cls.bom_sc_wizard_obj = cls.env['mrp.bom.standard.cost']
         cls.production_obj = cls.env['mrp.production']
         cls.produce_wiz = cls.env['mrp.product.produce']
         cls.unbuild_obj = cls.env['mrp.unbuild']
@@ -195,22 +194,7 @@ class TestBomStandardCost(common.SavepointCase):
         self.assertEqual(self.bom_sub_1.standard_total_cost_labor, 25.0)
         self.assertEqual(self.bom_sub_1.standard_total_cost_overhead, 70.0)
 
-    def test_03_bom_standard_cost_report(self):
-        """Test BoM standard costs report."""
-        wizard_1 = self.bom_sc_wizard_obj.create({
-            'bom_id': self.bom_top.id,
-            'product_id': self.product_top.id,
-        })
-        wizard_1.do_explode()
-        # Check costs
-        self.assertEqual(wizard_1.standard_cost_total, 445.0)
-        self.assertEqual(wizard_1.standard_cost_material, 360.0)
-        self.assertEqual(wizard_1.standard_cost_only_material, 170.0)
-        self.assertEqual(wizard_1.standard_total_cost_labor, 100.0)
-        self.assertEqual(wizard_1.standard_total_cost_overhead, 175.0)
-        self.assertEqual(len(wizard_1.line_ids), 4)
-
-    def test_04_manufacture_order(self):
+    def test_03_manufacture_order(self):
         """Create Manufacture Order and check account move lines created"""
         mo = self.production_obj.create({
             'name': 'MO-01',
@@ -233,7 +217,7 @@ class TestBomStandardCost(common.SavepointCase):
                 elif line.account_id == self.account_overhead:
                     self.assertEqual(line.credit, 70.0)
 
-    def test_05_ubuild_order(self):
+    def test_04_ubuild_order(self):
         """Create Unbuild Order and check account move lines created"""
         self.product_top.write({
             'standard_price': 445.0,
