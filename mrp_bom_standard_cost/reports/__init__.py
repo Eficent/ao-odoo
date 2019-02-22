@@ -1,1 +1,1 @@
-# from . import bom_standard_cost_report
+from . import mrp_report_bom_structure
