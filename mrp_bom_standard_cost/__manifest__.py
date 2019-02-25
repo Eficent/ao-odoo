@@ -13,6 +13,7 @@
         "mrp_bom_structure_report",
     ],
     "data": [
+        "security/ir.model.access.csv",
         "views/mrp_bom_views.xml",
         "views/mrp_bom_cost_views.xml",
         "views/report_template.xml",
