@@ -2,9 +2,7 @@
 # Copyright 2019 Eficent Business and IT Consulting Services S.L.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).
 
-import json
-
-from odoo import api, models, _
+from odoo import models, _
 from odoo.tools import float_round
 
 
