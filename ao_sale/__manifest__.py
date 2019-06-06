@@ -4,11 +4,12 @@
 
 {
     "name": "AO-specific customizations on sale",
-    "version": "11.0.2.2.0",
+    "version": "11.0.3.0.0",
     "author": "Eficent Business and IT Consulting Services S.L.",
     "website": "http://www.eficent.com",
     "category": "Sales",
-    "depends": ["sale_crm", "mrp", "ao_crm", "sale_stock"],
+    "depends": ["sale_crm", "mrp", "ao_crm", "sale_stock",
+                "mail_activity_done"],
     "data": [
         "security/ir.model.access.csv",
         "views/sale_view.xml",

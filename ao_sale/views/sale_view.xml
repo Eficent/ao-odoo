@@ -14,6 +14,9 @@
                         domain="[]"
                         context="{'group_by':'state'}"/>
             </group>
+            <filter name="activities_overdue" position="attributes">
+                 <attribute name="domain">[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d')), ('activity_ids.done', '=', False)]</attribute>
+            </filter>
         </field>
     </record>
 

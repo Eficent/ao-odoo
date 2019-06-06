@@ -18,6 +18,7 @@ This module contains customizations specific to Aleph Objects.
   in lines.
 * Disabling check availability because is not accurate
 * Extend Sales Analysis to include Sales tags.
+* Fix activity filter to not show done ones on overdue.
 
 Credits
 =======
