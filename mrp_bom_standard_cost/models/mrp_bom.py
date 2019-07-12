@@ -114,8 +114,8 @@ class MrpBom(models.Model):
             else:
                 total += line.product_qty * line.product_id.standard_price
                 materials += line.product_qty * line.product_id.standard_price
-        return starting_factor * total, starting_factor * \
-            materials, starting_factor * labor, starting_factor * overhead
+        return total / starting_factor, materials / starting_factor, \
+            labor / starting_factor, overhead / starting_factor
 
     @api.multi
     @api.depends('bom_cost_ids')
