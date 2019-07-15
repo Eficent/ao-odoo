@@ -98,8 +98,10 @@ class MrpBom(models.Model):
             round=False)
         # Iterate over all the lines in the current BoM
         for line in self.bom_line_ids:
-            # If the a component is manufactured we continue exploding.
+            # If the component is manufactured we continue exploding.
             bom = self._bom_find(product=line.product_id)
+            product_qty = line.product_uom_id._compute_quantity(
+                line.product_qty, line.product_id.uom_id)
             if bom:
                 sub_total, sub_materials, sub_labor, sub_overhead = \
                     bom.get_bom_standard_material_cost()
@@ -107,13 +109,13 @@ class MrpBom(models.Model):
                 # in the BoM line
                 cost = sub_total + bom.standard_cost_labor + \
                     bom.standard_cost_overhead
-                total += line.product_qty * cost
-                materials += line.product_qty * sub_materials
-                labor += line.product_qty * sub_labor
-                overhead += line.product_qty * sub_overhead
+                total += product_qty * cost
+                materials += product_qty * sub_materials
+                labor += product_qty * sub_labor
+                overhead += product_qty * sub_overhead
             else:
-                total += line.product_qty * line.product_id.standard_price
-                materials += line.product_qty * line.product_id.standard_price
+                total += product_qty * line.product_id.standard_price
+                materials += product_qty * line.product_id.standard_price
         return total / starting_factor, materials / starting_factor, \
             labor / starting_factor, overhead / starting_factor
 
