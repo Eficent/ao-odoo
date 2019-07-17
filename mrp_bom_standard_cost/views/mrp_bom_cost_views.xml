@@ -5,9 +5,10 @@
         <field name="name">mrp.bom.cost.tree</field>
         <field name="model">mrp.bom.cost</field>
         <field name="arch" type="xml">
-            <tree editable="top">
+            <tree editable="bottom">
                 <field name="cost_type"/>
                 <field name="product_id"/>
+                <field name="standard_price"/>
                 <field name="product_qty"/>
                 <field name="product_uom_id" groups="product.group_uom"/>
             </tree>

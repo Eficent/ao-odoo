@@ -14,11 +14,14 @@
             </xpath>
             <notebook position="inside">
                 <page string="Standard Cost Info" name="cost_page">
-                    <group>
-                        <field name="standard_cost_total"/>
-                        <field name="standard_cost_material"/>
-                        <field name="standard_cost_labor"/>
-                        <field name="standard_cost_overhead"/>
+                    <group class="oe_subtotal_footer_left oe_left" colspan="2" string="Unit Cost">
+                        <field name="standard_cost_material" string="Material"/>
+                        <field name="standard_cost_labor" string="Labor"/>
+                        <field name="standard_cost_overhead" string="Overhead"/>
+                        <div class="oe_subtotal_footer_separator_left oe_inline o_td_label">
+                            <label for="standard_cost_total" string="Total"/>
+                        </div>
+                        <field name="standard_cost_total" nolabel="1" class="oe_subtotal_footer_separator_left"/>
                     </group>
                     <field name="bom_cost_ids"/>
                 </page>
