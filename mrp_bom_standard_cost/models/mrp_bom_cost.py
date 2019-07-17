@@ -37,6 +37,11 @@ class MrpBomCost(models.Model):
         ondelete='cascade',
         required=True,
     )
+    standard_price = fields.Float(
+        string="Standard unit price",
+        related="product_id.standard_price",
+        readonly=True,
+    )
 
     @api.onchange('product_uom_id')
     def onchange_product_uom_id(self):
