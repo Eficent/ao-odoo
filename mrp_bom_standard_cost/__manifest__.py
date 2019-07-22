@@ -11,6 +11,7 @@
     "depends": [
         "account_move_line_manufacture_info",
         "mrp_bom_structure_report",
+        "stock_account"
     ],
     "data": [
         "security/ir.model.access.csv",

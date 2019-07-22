@@ -27,6 +27,20 @@ class ProductCategory(models.Model):
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
+    property_labor_account_id = fields.Many2one(
+        'account.account', 'Labor Account', company_dependent=True,
+        domain=[('deprecated', '=', False)],
+        help="For service type products that refer to a labor activity "
+             "used in the Bill of Materials as part of Non-material costs "
+             "needed to build the finished product")
+
+    property_overhead_account_id = fields.Many2one(
+        'account.account', 'Overhead Account', company_dependent=True,
+        domain=[('deprecated', '=', False)],
+        help="For service type products that refer to an overhead cost "
+             "used in the Bill of Materials as part of Non-material costs "
+             "needed to build the finished product")
+
     @api.multi
     def get_product_accounts(self, fiscal_pos=None):
         """ Add the non material accounts related to product to the result
@@ -37,8 +51,11 @@ class ProductTemplate(models.Model):
         accounts = super(ProductTemplate, self).get_product_accounts(
             fiscal_pos=fiscal_pos)
         accounts.update({
-            'labor_account': self.categ_id.property_labor_account_id or False,
-            'overhead_account': (self.categ_id.property_overhead_account_id
+            'labor_account': (self.property_labor_account_id or
+                              self.categ_id.property_labor_account_id or
+                              False),
+            'overhead_account': (self.property_overhead_account_id or
+                                 self.categ_id.property_overhead_account_id
                                  or False),
         })
         return accounts
